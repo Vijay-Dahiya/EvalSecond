@@ -25,13 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         initViews();
 
-        cbEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isClicked[0] =true;
-            }
-        });
-
 
 
 
@@ -41,7 +34,15 @@ public class MainActivity extends AppCompatActivity {
                 boolean isPasswordValid = isPasswordValid();
                 boolean isEmailValid = isEmailValid();
                 if (isEmailValid && isPasswordValid) {
+                    cbEmail.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            isClicked[0] = true;
+                        }
+                    });
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+
+                    startActivity(intent);
 
                 }
             }
@@ -49,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
     protected void onRestart() {
         super.onRestart();
         if(isClicked[0]){
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+
+            startActivity(intent);
+
         }
     }
     void initViews(){
